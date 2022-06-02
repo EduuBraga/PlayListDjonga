@@ -92,7 +92,3 @@ window.botoes = {
         return `${("0" + minutos).slice(-2)}:${("0" + segundos).slice(-2)}`
     }
 }
-
-
-
-

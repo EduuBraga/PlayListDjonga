@@ -2,47 +2,47 @@ window.audios = [
     {
         music : "./audios/1. Junho de 94.mp3",
         thumb : "./images/junhoDe94.jpg",
-        nome : "Junho De 94 - Djonga"
+        nome : "Junho De 94"
     },
     {
         music : "./audios/3. Leal.mp3",
         thumb : "./images/leal.jpg",
-        nome : "Leal - Djonga"
+        nome : "Leal"
     },
     {
         music : "./audios/4. Solto.mp3",
         thumb : "./images/solto.jpg",
-        nome : "Solto - Djonga"
+        nome : "Solto"
     },
     {
         music : "./audios/5. Ladrão.mp3",
         thumb : "./images/ladrão.jpg",
-        nome : "Ladrão - Djonga"
+        nome : "Ladrão"
     },
     {
         music : "./audios/6. Bença.mp3",
         thumb : "./images/Bença.jpg",
-        nome : "Bença - Djonga"
+        nome : "Bença"
     },
     {
         music : "./audios/7. Falcão.mp3",
         thumb : "./images/falcão.jpg",
-        nome : "Falcão - Djonga"
+        nome : "Falcão"
     },
     {
         music : "./audios/2. O cara de oculos.mp3",
         thumb : "./images/oCaraDeOculos.jpg",
-        nome : "O Cara De Óculos - Djonga"
+        nome : "O Cara De Óculos"
     },
     {
         music : "./audios/8. Hat-Trick.mp3",
         thumb : "./images/hatTrick.jpg",
-        nome : "Hat-Trick - Djonga"
+        nome : "Hat-Trick"
     },
     {
         music : "./audios/9. Olho de Tigre.mp3",
         thumb : "./images/olhoDeTigre.jpg",
-        nome : "Olho De Tigre - Djonga"
+        nome : "Olho De Tigre"
     },
     
 ]
