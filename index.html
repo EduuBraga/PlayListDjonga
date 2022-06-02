@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
+    <script src="./JS/index.js" defer></script>
+    <title>Djonga PLayList</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <img class="logo" src="./icons/logo.png" alt="">
+        <h1 class="header-title" style="fill:#000000; letter-spacing:1.5; word-spacing:0; kerning:auto; font-family:Ink Free; font-size:48; font-size-adjust:0.425789; font-weight:700; font-style:normal; stroke-width:0; font-stretch:100; text-anchor:middle"><tspan x="176.125pt">Djonga PLayList</tspan></h1>
+    </header>
+
+    <main class="card-main">
+
+        <section class="title-card">
+            <h2>Tocando agora:</h2>
+        </section>
+
+        <section class="card-thumb">
+            <img class="img-msc" src="" alt="Thumb Da Música">
+            <p class="name-music">Nome da Música</p>
+        </section>
+
+        <section>
+            <audio id="audio-principal" src="">
+            </audio>
+        </section>
+
+        <section class="card-timer">
+            <section>
+                <span id="tempoPercorrido">00:00</span>
+                <span id="tempoTotal">00:00</span>
+            </section>
+            <input id="progresso" type="range" min="0" max="0" step="1">
+        </section>
+
+        <section class="control">
+            <img class="btn" src="icons/anterior.PNG" alt="Botão De Voltar Música">
+            <img class="btn" src="icons/play.PNG" alt="Botão de PLay">
+            <img class="btn" src="icons/proxima.PNG" alt="Botão para ir para a próxima música">
+        </section>
+    </main>
+    <section class="article">
+        <h3>Sobre Djonga</h3>
+        <img src="images/Djonga.jpg" alt="Gustavo Pereira Marques">
+        <article><strong>Gustavo Pereira Marques</strong> (Belo Horizonte, 4 de junho de 1994), mais conhecido pelo nome
+            artístico Djonga, é um rapper, escritor e compositor brasileiro. Considerado um dos nomes mais influentes do
+            rap na atualidade, o artista chama a atenção por sua lírica afiada, marginalizada e agressiva e por suas
+            fortes críticas sociais nas letras.</article>
+    </section>
+
+    <footer class="footer">
+        <p class="p">Desenvolvido por <a class="link" target="_blank"href="https://www.linkedin.com/in/eduardo-braga-aa0aa922b/">Eduardo Braga</a>.<img class="ico" src="./icons/logoLinkedin.png" alt="Ícone linkedin"></p>
+        
+    </footer>
+    <script src="./JS/audio.js"></script>
+    <script src="./JS/player.js"></script>
+</body>
+
+</html>

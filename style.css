@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-image: linear-gradient(330deg, #F5F5DC, #E6DEC1, #E0DCCA); */
+    background-image: linear-gradient(45deg, #ebebcb, #d7d0b7, #c4bfad);
+}
+
+
+/* ======= Header style ====== */
+.header {
+    text-align: center;
+    background-color: #615F57;
+    color: white;
+}
+.logo{
+    width: 70px;
+    position: relative;
+    top: 20px;
+    right: 2px;
+}
+.header-title{
+    display: inline-block;
+}
+/* ======== Card Main Style ======== */
+.card-main {
+    background-image: linear-gradient(235deg, #f1f1cb, #e7e2cd, #ccc9bb);
+    box-shadow: #616157 0 0 10px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 280px;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 60px;
+}
+
+.title-card {
+    padding: 1px;
+}
+
+.img-msc {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+/* ===== Barra de Progresso ====== */
+#progresso {
+    width: 90%;
+}
+
+#tempoPercorrido {
+    float: left;
+    margin-left: 6%;
+}
+
+#tempoTotal {
+    float: right;
+    margin-right: 6%;
+}
+
+/* ======= Boton Style ======= */
+.btn {
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    background-color: #615f578a;
+}
+
+
+
+/* ======= Article style ======= */
+.article {
+    text-align: center;
+    margin-top: 60px;
+    background-color: #b5b2a4;
+    padding: 15px 40px 15px 40px;
+}
+
+.article>img {
+    width: 70%;
+    margin: 10px;
+}
+
+.article>h3 {
+    margin: 0;
+}
+
+
+/* ====== Footer Style ======= */
+.footer {
+    background-color: #615F57;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.p {
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    font-weight: 100;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.ico {
+    display: inline-block;
+    width: 35px;
+    position: relative;
+    left: 5px;
+    top: 10px;
+}
+
+.link {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+
+
+/* =-=-=-=-= Media Queries =-=-=-=-= */
+
+
+
+    /* ======Dekstops====== */
+@media screen and (min-width: 800px) {
+    .article {
+        text-align: center;
+        margin-top: 60px;
+        background-color: #b5b2a4;
+        padding: 15px 40px 15px 40px;
+    }
+
+    article {
+        width: 70%;
+        margin: auto;
+    }
+
+    .article>img {
+        width: 50%;
+        margin: 10px;
+    }
+
+    .article>h3 {
+        margin: 0px;
+    }
+}
+
+    /* ======Celular======= */
+@media screen and (max-width: 420px) {
+    /* ======= Header style ======= */
+    .header-title{
+        display: inline-block;
+        font-size: 30px;
+    }
+    
+    /* ========Card Main Style======== */
+    .header
+    .card-main {
+        background-image: linear-gradient(235deg, #f1f1cb, #e7e2cd, #ccc9bb);
+        box-shadow: #616157 0 0 10px;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        width: 240px;
+        text-align: center;
+        border-radius: 20px;
+        margin-top: 60px;
+    }
+    .img-msc {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+
+    /* ======Footer Style======= */
+    .p {
+        font-family: 'Courier New', Courier, monospace;
+        display: inline-block;
+        font-weight: 100;
+        font-size: 14px;
+    }
+
+    .ico {
+        display: inline-block;
+        width: 35px;
+        position: relative;
+        left: 5px;
+        top: 10px;
+    }
+
+}
