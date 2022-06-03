@@ -1,3 +1,4 @@
+// ====== Puxando os elementos do áudio e manipulando para modificar na web
 window.player = {
     thumbMsc: document.querySelector(".img-msc"),
     nomeMsc: document.querySelector(".name-music"),
@@ -31,7 +32,7 @@ window.player = {
 }
 
 
-
+// ====== Puxando os botões e Funções dos botões
 window.botoes = {
     btnAnterior: document.getElementsByClassName("btn")[0],
     btnPP: document.getElementsByClassName("btn")[1],

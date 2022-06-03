@@ -1,3 +1,4 @@
+// ====== Arquivos dos áudios
 window.audios = [
     {
         music : "./audios/1. Junho de 94.mp3",
