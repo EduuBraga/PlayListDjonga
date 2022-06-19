@@ -57,6 +57,7 @@ window.botoes = {
         if (player.audio.paused) {
             botoes.btnPP.src = "./icons/pause.png"
             player.audio.play()
+            botoes.barraDeProgresso.max = player.audio.duration
         } else {
             botoes.btnPP.src = "./icons/play.png"
             player.audio.pause()
