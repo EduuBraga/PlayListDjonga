@@ -25,7 +25,7 @@ window.player = {
         player.audio.src = player.audioAtual.music
         player.thumbMsc.src = player.audioAtual.thumb
         player.nomeMsc.innerText = player.audioAtual.nome
-        botoes.btnPP.src = "./icons/pause.png"
+        botoes.btnPP.src = "./assets/icons/pause.png"
         botoes.barraDeProgresso.value = 0
         player.audio.play()
     }
@@ -50,16 +50,16 @@ window.botoes = {
         player.audio.src = player.audioAtual.music
         player.thumbMsc.src = player.audioAtual.thumb
         player.nomeMsc.innerText = player.audioAtual.nome
-        botoes.btnPP.src = "./icons/play.png"
+        botoes.btnPP.src = "./assets/icons/play.png"
         botoes.barraDeProgresso.value = 0
     },
     PlayPause() {
         if (player.audio.paused) {
-            botoes.btnPP.src = "./icons/pause.png"
+            botoes.btnPP.src = "./assets/icons/pause.png"
             player.audio.play()
             botoes.barraDeProgresso.max = player.audio.duration
         } else {
-            botoes.btnPP.src = "./icons/play.png"
+            botoes.btnPP.src = "./assets/icons/play.png"
             player.audio.pause()
         }
     },
@@ -73,7 +73,7 @@ window.botoes = {
         player.audio.src = player.audioAtual.music
         player.thumbMsc.src = player.audioAtual.thumb
         player.nomeMsc.innerText = player.audioAtual.nome
-        botoes.btnPP.src = "./icons/play.png"
+        botoes.btnPP.src = "./assets/icons/play.png"
         botoes.barraDeProgresso.value = 0
     },
     mudarProgresso() {
