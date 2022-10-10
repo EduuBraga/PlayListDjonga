@@ -16,17 +16,17 @@ window.audios = [
         nome : "Solto"
     },
     {
-        music : "./assets/audios/5. Ladrão.mp3",
+        music : "./assets/audios/5. Ladrao.mp3",
         thumb : "./assets/images/ladrão.jpg",
         nome : "Ladrão"
     },
     {
-        music : "./assets/audios/6. Bença.mp3",
+        music : "./assets/audios/6. Benca.mp3",
         thumb : "./assets/images/Bença.jpg",
         nome : "Bença"
     },
     {
-        music : "./assets/audios/7. Falcão.mp3",
+        music : "./assets/audios/7. Falcao.mp3",
         thumb : "./assets/images/falcão.jpg",
         nome : "Falcão"
     },
@@ -36,7 +36,7 @@ window.audios = [
         nome : "O Cara De Óculos"
     },
     {
-        music : "./assets/audios/8. Hat-Trick.mp3",
+        music : "./assets/audios/8. Hat Trick.mp3",
         thumb : "./assets/images/hatTrick.jpg",
         nome : "Hat-Trick"
     },

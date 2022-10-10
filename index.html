@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -18,36 +18,45 @@
         </h1>
     </header>
 
-    <section class="container__main">
-        <main class="card-main">
+    <main class="container__main">
+        <section class="card-main">
             <h2>Tocando agora:</h2>
 
-            <section>
+            <div>
                 <img class="img-msc" src="" alt="Thumb Da Música">
                 <p class="name-music">Nome da Música</p>
                 <audio id="audio-principal" src=""></audio>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <div>
                     <span id="tempoPercorrido">00:00</span>
                     <span id="tempoTotal">00:00</span>
                 </div>
                 <input id="progresso" type="range" min="0" max="0" step="1">
-            </section>
+            </div>
 
             <section class="control">
                 <img class="btn" src="./assets/icons/anterior.PNG" alt="Botão De Voltar Música">
                 <img class="btn" src="./assets/icons/play.PNG" alt="Botão de PLay">
                 <img class="btn" src="./assets/icons/proxima.PNG" alt="Botão para ir para a próxima música">
             </section>
-        </main>
+
+            <img class="img-open-playlist" onclick="player.showPlaylist()" src="./assets/icons/open.PNG" alt="Abrir playlist">
+
+            <section id="playlist">
+                <div class="container_close">
+                    <img onclick="player.hidePlaylist()" src="./assets/icons/close.PNG" alt="Fechar playlist">
+                </div>
+                <div id="container-audios"></div>
+            </section>
+
+        </section>
+
         <section class="card-frase">
             <p>"Eu sou daqueles que da o papo reto e vive torto" by Djonga</p>
         </section>
-    </section>
-
-
+    </main>
 
     <section class="container__sobre">
         <h3>Sobre Djonga</h3>
@@ -65,7 +74,7 @@
     </section>
 
     <footer class="footer">
-        <p>Desenvolvido por</p> 
+        <p>Desenvolvido por</p>
         <a class="link" target="_blank" href="https://github.com/EduuBraga">Eduardo Braga</a>
         <img class="ico" src="./assets/icons/logo-github.png" alt="Ícone GitHub">
     </footer>
