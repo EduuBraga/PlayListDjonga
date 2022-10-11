@@ -1,7 +1,7 @@
 // ====== Start e eventos atribuídos aos botões =====
 window.addEventListener("load", () => {
     player.start()
-    player.PlaylistStart()
+    playlist.PlaylistStart()
 
     botoes.btnAnterior.addEventListener("click", botoes.voltarMsc)
     botoes.btnPP.addEventListener("click", botoes.PlayPause)

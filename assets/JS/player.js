@@ -3,10 +3,6 @@ window.player = {
     thumbMsc: document.querySelector(".img-msc"),
     nomeMsc: document.querySelector(".name-music"),
     audio: document.querySelector("#audio-principal"),
-    Playlist: document.querySelector('#playlist'),
-    containerAudiosPlaylist: document.querySelector("#container-audios"),
-    musicsPlaylist: [],
-    audiosPlaylistPlay: [],
     audiosFile: audios,
     audioAtual: {},
     audioContagem: 0,
@@ -33,12 +29,18 @@ window.player = {
         botoes.barraDeProgresso.value = 0
         player.audio.play()
     },
-    StartMusicPlaylist(e) {
-        let containerMusicClicada = e.target
-        let musicClicada = e.target.children[2]
 
-        for (let i = 0; player.audiosPlaylistPlay.length > i; i++) {
-            if (player.audiosPlaylistPlay[i].played.length === 1) {
+}
+
+// Objeto gerente da playlist 
+window.playlist = {
+    Playlist: document.querySelector('#playlist'),
+    containerAudiosPlaylist: document.querySelector("#container-audios"),
+    audiosPlaylistPlay: [],
+    itemsPlaylist: [],
+    StartMusicPlaylist(event) {
+        for (let i = 0; playlist.audiosPlaylistPlay.length > i; i++) {
+            if (playlist.audiosPlaylistPlay[i].played.length === 1) {
                 let musicaTocando = player.audiosPlaylistPlay[i]
                 musicaTocando.pause()
                 musicaTocando.played.length = 0
@@ -49,65 +51,65 @@ window.player = {
                     musicaActive.classList.remove('active-music-playlist')
                 }
 
-                player.playMusicPLaylist(musicClicada, containerMusicClicada)
-                e.target.classList.add('active-music-playlist')
+                let idMusic = event.target.getAttribute('id')
+                player.audioContagem = idMusic
+                player.audioAtual = player.audiosFile[player.audioContagem]
+
+                player.audio.src = player.audioAtual.music
+                player.thumbMsc.src = player.audioAtual.thumb
+                player.nomeMsc.innerText = player.audioAtual.nome
+                event.target.classList.add('active-music-playlist')
+                botoes.btnPP.src = "./assets/icons/play.png"
             }
         }
-    },
-    playMusicPLaylist(audio, containerMusicClicada) {
-        player.audioContagem = containerMusicClicada.getAttribute('id')
-        player.audioAtual = player.audiosFile[player.audioContagem]
 
-        player.audio.src = audio.getAttribute('src')
-        player.thumbMsc.src = player.audioAtual.thumb
-        player.nomeMsc.innerText = player.audioAtual.nome
 
-        botoes.barraDeProgresso.max = audio.duration
-        botoes.btnPP.src = "./assets/icons/pause.png"
-        player.audio.play()
     },
     PlaylistStart() {
         let musicasNome = audios.map(music => { return music.nome })
         let srcDasMusicas = audios.map(music => { return music.music })
 
         for (let i = 0; audios.length > i; i++) {
-            player.containerAudiosPlaylist.innerHTML += `<audio class="audios-playlist" src="${srcDasMusicas[i]}"></audio>`
+            playlist.containerAudiosPlaylist.innerHTML += `<audio class="audios-playlist" src="${srcDasMusicas[i]}"></audio>`
             let audiosPlaylist = document.querySelectorAll('.audios-playlist')
 
             audiosPlaylist[i].addEventListener("loadeddata", () => {
                 let durationMusicsPlaylist = []
-
                 durationMusicsPlaylist.push(botoes.segundosParaMinutos(audiosPlaylist[i].duration))
 
-                player.Playlist.innerHTML += `
-                <div id="${i}" class="item-playlist"> 
+                playlist.Playlist.innerHTML += `
+                <div id="${i}" class="item-playlist" onclick="playlist.StartMusicPlaylist(event)"> 
                     <div>${musicasNome[i]}</div> 
                     <span>${durationMusicsPlaylist}</span> 
-                    <audio class="audios-playlist-play" src="${srcDasMusicas[i]}"></audio>
                 </div>`
 
-                player.audiosPlaylistPlay = document.querySelectorAll(".audios-playlist-play")
+                playlist.audiosPlaylistPlay = document.querySelectorAll(".audios-playlist")
+                playlist.itemsPlaylist = document.querySelectorAll(".item-playlist")
             })
-
-            setTimeout(() => {
-                let playlistItems = document.querySelectorAll(".item-playlist")
-                playlistItems[i].addEventListener("click", player.StartMusicPlaylist)
-
-                if (player.audioContagem == playlistItems[i].getAttribute('id')) {
-                    playlistItems[i].classList.add('active-music-playlist')
-                }
-            }, 1000)
         }
     },
     hidePlaylist() {
-        player.Playlist.style = "bottom: -100%;"
+        playlist.Playlist.style = "bottom: -100%;"
     },
     showPlaylist() {
-        player.Playlist.style = "bottom: 0;"
+        playlist.Playlist.style = "bottom: 0;"
+    },
+    ActiveButtonPLaylist() {
+        for (let i = 0; audios.length > i; i++) {
+            if (player.audioContagem == playlist.itemsPlaylist[i].getAttribute('id')) {
+                playlist.itemsPlaylist[i].classList.add('active-music-playlist')
+            }
+        }
+    },
+    removeActive() {
+        let musicaActive = document.querySelector('.active-music-playlist')
+        if (musicaActive) {
+            musicaActive.classList.remove('active-music-playlist')
+        }
     }
 }
 
-// ====== Puxando os botões e Funções dos botões
+// === Objeto gerente dos botões ===
 window.botoes = {
     btnAnterior: document.getElementsByClassName("btn")[0],
     btnPP: document.getElementsByClassName("btn")[1],
@@ -128,18 +130,8 @@ window.botoes = {
         botoes.btnPP.src = "./assets/icons/play.png"
         botoes.barraDeProgresso.value = 0
 
-        let musicaActive = document.querySelector('.active-music-playlist')
-        if (musicaActive) {
-            console.log(musicaActive)
-            musicaActive.classList.remove('active-music-playlist')
-        }
-
-        for (let i = 0; audios.length > i; i++) {
-            let playlistItems = document.querySelectorAll(".item-playlist")
-            if (player.audioContagem == playlistItems[i].getAttribute('id')) {
-                playlistItems[i].classList.add('active-music-playlist')
-            }
-        }
+        playlist.removeActive()
+        playlist.ActiveButtonPLaylist()
     },
     PlayPause() {
         if (player.audio.paused) {
@@ -150,6 +142,8 @@ window.botoes = {
             botoes.btnPP.src = "./assets/icons/play.png"
             player.audio.pause()
         }
+
+        playlist.ActiveButtonPLaylist()
     },
     proximaMsc() {
         this.btnProxima = player.audioContagem++
@@ -164,18 +158,9 @@ window.botoes = {
         botoes.btnPP.src = "./assets/icons/play.png"
         botoes.barraDeProgresso.value = 0
 
-        let musicaActive = document.querySelector('.active-music-playlist')
-        if (musicaActive) {
-            console.log(musicaActive)
-            musicaActive.classList.remove('active-music-playlist')
-        }
 
-        for (let i = 0; audios.length > i; i++) {
-            let playlistItems = document.querySelectorAll(".item-playlist")
-            if (player.audioContagem == playlistItems[i].getAttribute('id')) {
-                playlistItems[i].classList.add('active-music-playlist')
-            }
-        }
+        playlist.removeActive()
+        playlist.ActiveButtonPLaylist()
     },
     mudarProgresso() {
         player.audio.currentTime = botoes.barraDeProgresso.value
