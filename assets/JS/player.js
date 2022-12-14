@@ -10,6 +10,7 @@ const player = {
     player.audioCurrent = player.audiosFile[player.indexAudioCurrent]
 
     player.audioMain.src = player.audioCurrent.music
+    player.audioMain.id = player.audioCurrent.id
     player.thumbMsc.src = player.audioCurrent.thumb
     player.nameMsc.innerText = player.audioCurrent.nameMsc
 
@@ -56,6 +57,7 @@ const buttons = {
   },
   PlayOrPauseMusic() {
     const musicPaused = player.audioMain.paused
+    buttons.progressBar.max = player.audioMain.duration
 
     if (musicPaused) {
       buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
@@ -92,17 +94,15 @@ const buttons = {
 // Objeto gerente da playlist 
 const playlist = {
   imgOpenPlaylist: document.querySelector('.img_open_playlist'),
-  imgClosePlaylist: document.querySelector('.img_close_playlist'),
-  containerClosePlaylist: document.querySelector('.container_close'),
   containerPlaylist: document.querySelector('.container_playlist'),
-  startHTMLplaylist(){
+  startHTMLplaylist() {
     let HTMLPlaylist = ""
 
     player.audiosFile.forEach(audio => {
       HTMLPlaylist += `
         <div id="${audio.id}" class="item-playlist"> 
             <div>${audio.nameMsc}</div> 
-            <span>3:50</span> 
+            <span">${audio.duration}</span> 
         </div>
       `
     });
@@ -110,7 +110,8 @@ const playlist = {
     playlist.containerPlaylist.innerHTML += HTMLPlaylist
   },
   hideOrShowPlaylist(hideOrShow) {
-    hideOrShow === 'show' ? playlist.containerPlaylist.style = "bottom: 0"
+    hideOrShow === 'show'
+      ? playlist.containerPlaylist.style = "bottom: 0"
       : playlist.containerPlaylist.style = "bottom: -100%"
   },
   // ActiveButtonPLaylist() {
