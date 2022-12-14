@@ -5,9 +5,9 @@ const player = {
   audioMain: document.querySelector("#audio-main"),
   audiosFile: audios,
   audioCurrent: {},
-  audioCount: 0,
+  indexAudioCurrent: 0,
   start() {
-    player.audioCurrent = player.audiosFile[player.audioCount]
+    player.audioCurrent = player.audiosFile[player.indexAudioCurrent]
 
     player.audioMain.src = player.audioCurrent.music
     player.thumbMsc.src = player.audioCurrent.thumb
@@ -16,10 +16,10 @@ const player = {
     buttons.progressBar.max = player.audioMain.duration
   },
   reStart() {
-    player.audioCount++
+    player.indexAudioCurrent++
 
-    if (player.audioCount > player.audiosFile.length - 1) {
-      player.audioCount = 0
+    if (player.indexAudioCurrent > player.audiosFile.length - 1) {
+      player.indexAudioCurrent = 0
     }
 
     player.start()
@@ -49,8 +49,8 @@ const playlist = {
         }
 
         let idMusic = event.target.getAttribute('id')
-        player.audioCount = idMusic
-        player.audioCurrent = player.audiosFile[player.audioCount]
+        player.indexAudioCurrent = idMusic
+        player.audioCurrent = player.audiosFile[player.indexAudioCurrent]
 
         player.audioMain.src = player.audioCurrent.music
         player.thumbMsc.src = player.audioCurrent.thumb
@@ -91,7 +91,7 @@ const playlist = {
   },
   ActiveButtonPLaylist() {
     for (let i = 0; audios.length > i; i++) {
-      if (player.audioCount == playlist.itemsPlaylist[i].getAttribute('id')) {
+      if (player.indexAudioCurrent == playlist.itemsPlaylist[i].getAttribute('id')) {
         playlist.itemsPlaylist[i].classList.add('active-music-playlist')
       }
     }
@@ -110,19 +110,27 @@ const buttons = {
   btnPlayOrPause: document.querySelector('.btn_play_or_pause'),
   btnToNext: document.querySelector('.btn_to_next'),
   progressBar: document.querySelector("#progress"),
-  timeTotal: document.getElementById("timeTotal"),
-  timeCurrent: document.getElementById("timeCurrent"),
-  toBackMsc() {
-    player.audioCount--
+  timeTotal: document.querySelector("#timeTotal"),
+  timeCurrent: document.querySelector("#timeCurrent"),
+  backOrAdvanceIndex(backOrNext) {
+    const lastIndexAudio = player.audiosFile.length - 1
 
-    if (player.audioCount < 0) {
-      player.audioCount = player.audiosFile.length - 1
+    if(backOrNext === 'back'){
+      player.indexAudioCurrent--
+
+      const indexAudioNegative = player.indexAudioCurrent < 0
+      indexAudioNegative ? player.indexAudioCurrent = lastIndexAudio : null
+    }else{
+      player.indexAudioCurrent++
+
+      const indexAudioSpentLastIndex = player.indexAudioCurrent > lastIndexAudio
+      indexAudioSpentLastIndex ? player.indexAudioCurrent = 0 : null
     }
-    player.audioCurrent = player.audiosFile[player.audioCount]
+  },
+  handleBackOrNextMusic(backOrNext) {
+    buttons.backOrAdvanceIndex(backOrNext)
 
-    player.audioMain.src = player.audioCurrent.music
-    player.thumbMsc.src = player.audioCurrent.thumb
-    player.nameMsc.innerText = player.audioCurrent.nameMsc
+    player.start()
     buttons.btnPlayOrPause.src = "./assets/icons/play.png"
     buttons.progressBar.value = 0
 
@@ -139,23 +147,6 @@ const buttons = {
       player.audioMain.pause()
     }
 
-    playlist.ActiveButtonPLaylist()
-  },
-  toNextMsc() {
-    player.audioCount++
-
-    if (player.audioCount > player.audiosFile.length - 1) {
-      player.audioCount = 0
-    }
-    player.audioCurrent = player.audiosFile[player.audioCount]
-
-    player.audioMain.src = player.audioCurrent.music
-    player.thumbMsc.src = player.audioCurrent.thumb
-    player.nameMsc.innerText = player.audioCurrent.nameMsc
-    buttons.btnPlayOrPause.src = "./assets/icons/play.png"
-    buttons.progressBar.value = 0
-
-    playlist.removeActive()
     playlist.ActiveButtonPLaylist()
   },
   changeProgress() {

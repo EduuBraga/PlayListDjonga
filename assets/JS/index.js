@@ -3,9 +3,11 @@ window.addEventListener("load", () => {
   player.start()
   playlist.PlaylistStart()
 
-  buttons.btnToBack.addEventListener("click", buttons.toBackMsc)
+  buttons.btnToBack
+    .addEventListener("click", _ => buttons.handleBackOrNextMusic('back'))
+  buttons.btnToNext
+    .addEventListener("click", _ => buttons.handleBackOrNextMusic('next'))
   buttons.btnPlayOrPause.addEventListener("click", buttons.PlayOrPauseMusic)
-  buttons.btnToNext.addEventListener("click", buttons.toNextMsc)
 
   buttons.progressBar.addEventListener("charge", buttons.changeProgress)
   buttons.progressBar.addEventListener("input", buttons.changeProgress)
