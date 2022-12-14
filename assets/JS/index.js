@@ -15,5 +15,5 @@ window.addEventListener("load", () => {
   player.audioMain.addEventListener("timeupdate", buttons.updateProgress)
   player.audioMain
     .addEventListener("loadeddata", buttons.AddTimeAudioToElement)
-  player.audioMain.addEventListener("ended", player.reStart)
+  player.audioMain.addEventListener("ended", player.nextMusic)
 })

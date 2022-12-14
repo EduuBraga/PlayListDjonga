@@ -1,4 +1,4 @@
-// ====== Puxando os elementos do áudio e manipulando para modificar na web
+// Objeto manipulador do áudio
 const player = {
   thumbMsc: document.querySelector(".img-msc"),
   nameMsc: document.querySelector(".name-music"),
@@ -15,13 +15,8 @@ const player = {
 
     buttons.progressBar.max = player.audioMain.duration
   },
-  reStart() {
-    player.indexAudioCurrent++
-
-    if (player.indexAudioCurrent > player.audiosFile.length - 1) {
-      player.indexAudioCurrent = 0
-    }
-
+  nextMusic() {
+    buttons.backOrAdvanceIndex('next')
     player.start()
     buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
     buttons.progressBar.value = 0
@@ -104,7 +99,7 @@ const playlist = {
   }
 }
 
-// === Objeto gerente dos botões ===
+// Objeto manipulador dos botões 
 const buttons = {
   btnToBack: document.querySelector('.btn_to_back'),
   btnPlayOrPause: document.querySelector('.btn_play_or_pause'),
@@ -115,12 +110,12 @@ const buttons = {
   backOrAdvanceIndex(backOrNext) {
     const lastIndexAudio = player.audiosFile.length - 1
 
-    if(backOrNext === 'back'){
+    if (backOrNext === 'back') {
       player.indexAudioCurrent--
 
       const indexAudioNegative = player.indexAudioCurrent < 0
       indexAudioNegative ? player.indexAudioCurrent = lastIndexAudio : null
-    }else{
+    } else {
       player.indexAudioCurrent++
 
       const indexAudioSpentLastIndex = player.indexAudioCurrent > lastIndexAudio
@@ -133,21 +128,18 @@ const buttons = {
     player.start()
     buttons.btnPlayOrPause.src = "./assets/icons/play.png"
     buttons.progressBar.value = 0
-
-    playlist.removeActive()
-    playlist.ActiveButtonPLaylist()
   },
   PlayOrPauseMusic() {
-    if (player.audioMain.paused) {
+    const musicPaused = player.audioMain.paused
+
+    if (musicPaused) {
       buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
       player.audioMain.play()
-      buttons.progressBar.max = player.audioMain.duration
-    } else {
-      buttons.btnPlayOrPause.src = "./assets/icons/play.png"
-      player.audioMain.pause()
+      return
     }
 
-    playlist.ActiveButtonPLaylist()
+    buttons.btnPlayOrPause.src = "./assets/icons/play.png"
+    player.audioMain.pause()
   },
   changeProgress() {
     player.audioMain.currentTime = buttons.progressBar.value
