@@ -20,5 +20,8 @@ window.addEventListener("load", () => {
   player.audioMain.addEventListener("ended", player.nextMusic)
 
   // Adicionando eventos a Playlist
-  playlist.imgOpenPlaylist.addEventListener('click', playlist.showPlaylist)
+  playlist.imgOpenPlaylist
+    .addEventListener('click', _ => playlist.hideOrShowPlaylist('show'))
+  playlist.imgClosePlaylist
+    .addEventListener('click', _ => playlist.hideOrShowPlaylist('hide'))
 })

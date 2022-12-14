@@ -91,7 +91,8 @@ const buttons = {
 
 // Objeto gerente da playlist 
 const playlist = {
-  imgOpenPlaylist: document.querySelector('.img-open-playlist'),
+  imgOpenPlaylist: document.querySelector('.img_open_playlist'),
+  imgClosePlaylist: document.querySelector('.img_close_playlist'),
   Playlist: document.querySelector('#playlist'),
   containerAudiosPlaylist: document.querySelector("#container-audios"),
   audiosPlaylistPlay: [],
@@ -144,11 +145,9 @@ const playlist = {
       })
     }
   },
-  hidePlaylist() {
-    playlist.Playlist.style = "bottom: -100%;"
-  },
-  showPlaylist() {
-    playlist.Playlist.style = "bottom: 0;"
+  hideOrShowPlaylist(hideOrShow) {
+    hideOrShow === 'show' ? playlist.Playlist.style = "bottom: 0;"
+      : playlist.Playlist.style = "bottom: -100%;"
   },
   ActiveButtonPLaylist() {
     for (let i = 0; audios.length > i; i++) {
