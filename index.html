@@ -2,85 +2,58 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles/style.css">
-    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
-    <script src="./assets/JS/index.js" defer></script>
-    <title>Djonga PLayList</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/styles/style.css">
+  <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+  <script src="./assets/JS/index.js" defer></script>
+  <title>Djonga PLayList</title>
 </head>
 
 <body>
+  <main class="container__main">
+    <section class="card-music">
+      <h2>Tocando agora:</h2>
 
-    <header class="header">
-        <img class="logo" src="./assets/icons/logo.png" alt="">
-        <h1 class="header-title">Djonga PLayList</tspan>
-        </h1>
-    </header>
+      <div>
+        <img class="img-msc" src="" alt="Thumb Da Música">
+        <p class="name-music">Nome da Música</p>
+        <audio id="audio-principal" src=""></audio>
+      </div>
 
-    <main class="container__main">
-        <section class="card-main">
-            <h2>Tocando agora:</h2>
-
-            <div>
-                <img class="img-msc" src="" alt="Thumb Da Música">
-                <p class="name-music">Nome da Música</p>
-                <audio id="audio-principal" src=""></audio>
-            </div>
-
-            <div>
-                <div>
-                    <span id="tempoPercorrido">00:00</span>
-                    <span id="tempoTotal">00:00</span>
-                </div>
-                <input id="progresso" type="range" min="0" max="0" step="1">
-            </div>
-
-            <section class="control">
-                <img class="btn" src="./assets/icons/anterior.PNG" alt="Botão De Voltar Música">
-                <img class="btn" src="./assets/icons/play.PNG" alt="Botão de PLay">
-                <img class="btn" src="./assets/icons/proxima.PNG" alt="Botão para ir para a próxima música">
-            </section>
-
-            <img class="img-open-playlist" onclick="playlist.showPlaylist()" src="./assets/icons/open.PNG" alt="Abrir playlist">
-
-            <section id="playlist">
-                <div class="container_close">
-                    <img onclick="playlist.hidePlaylist()" src="./assets/icons/close.PNG" alt="Fechar playlist">
-                </div>
-                <div id="container-audios"></div>
-            </section>
-
-        </section>
-
-        <section class="card-frase">
-            <p>"Eu sou daqueles que da o papo reto e vive torto" by Djonga</p>
-        </section>
-    </main>
-
-    <section class="container__sobre">
-        <h3>Sobre Djonga</h3>
-        <div class="card__sobre">
-            <img src="./assets/images/Djonga.png" alt="Gustavo Pereira Marques">
-            <article><strong>Gustavo Pereira Marques</strong> (Belo Horizonte, 4 de junho de 1994), mais conhecido pelo
-                nome
-                artístico Djonga, é um rapper, escritor e compositor brasileiro. Considerado um dos nomes mais
-                influentes do
-                rap na atualidade, o artista chama a atenção por sua lírica afiada, marginalizada e agressiva e por suas
-                fortes críticas sociais nas letras. saiba mais clicando
-                <a href="https://pt.wikipedia.org/wiki/Djonga_(rapper)" target="_blank">aqui</a>.
-            </article>
+      <div>
+        <div>
+          <span id="tempoPercorrido">00:00</span>
+          <span id="tempoTotal">00:00</span>
         </div>
+        <input id="progresso" type="range" min="0" max="0" step="1">
+      </div>
+
+      <section class="control">
+        <img class="btn" src="./assets/icons/anterior.PNG" alt="Botão De Voltar Música">
+        <img class="btn" src="./assets/icons/play.PNG" alt="Botão de PLay">
+        <img class="btn" src="./assets/icons/proxima.PNG" alt="Botão para ir para a próxima música">
+      </section>
+
+      <img class="img-open-playlist" onclick="playlist.showPlaylist()" src="./assets/icons/open.PNG"
+        alt="Abrir playlist">
+
+      <section id="playlist">
+        <div class="container_close">
+          <img onclick="playlist.hidePlaylist()" src="./assets/icons/close.PNG" alt="Fechar playlist">
+        </div>
+        <div id="container-audios"></div>
+      </section>
+
     </section>
 
-    <footer class="footer">
-        <p>Desenvolvido por</p>
-        <a class="link" target="_blank" href="https://github.com/EduuBraga">Eduardo Braga</a>
-        <img class="ico" src="./assets/icons/logo-github.png" alt="Ícone GitHub">
-    </footer>
+    <section class="card-frase">
+      <p>"Eu sou daqueles que da o papo reto e vive torto" by Djonga</p>
+    </section>
+  </main>
 
-    <script src="./assets/JS/audio.js"></script>
-    <script src="./assets/JS/player.js"></script>
+  <script src="./assets/JS/audio.js"></script>
+  <script src="./assets/JS/player.js"></script>
 </body>
 
 </html>
