@@ -9,11 +9,6 @@ body {
   background-image: linear-gradient(135deg, #ebebcb, #e3dbc1, #cfcab8);
 }
 
-/* ====== FRASE ========*/
-.card-frase {
-  display: none;
-}
-
 /* ======== CONTAINER MAIN ======== */
 .container__main {
   display: flex;
@@ -31,6 +26,10 @@ body {
   width: 280px;
   text-align: center;
   border-radius: 8px;
+}
+
+.card-sentence {
+  display: none;
 }
 
 .img-msc {
@@ -121,8 +120,8 @@ body {
   background-repeat: no-repeat;
 }
 
-/* ===== BARRA DE PROGRESSO ====== */
-#progresso {
+/* ===== BARRA DE progresso ====== */
+#progress {
   -webkit-appearance: none;
   appearance: none;
   width: 90%;
@@ -132,7 +131,7 @@ body {
   cursor: pointer;
 }
 
-#progresso::-webkit-slider-thumb {
+#progress::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   border-radius: 50%;
@@ -142,7 +141,7 @@ body {
   cursor: pointer;
 }
 
-#progresso::-moz-range-thumb {
+#progress::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
   border-radius: 50%;
@@ -152,12 +151,12 @@ body {
   cursor: pointer;
 }
 
-#tempoPercorrido {
+#timeCurrent {
   float: left;
   margin-left: 6%;
 }
 
-#tempoTotal {
+#timeTotal {
   float: right;
   margin-right: 6%;
 }
@@ -190,13 +189,13 @@ body {
   }
 
   /* ====== FRASE ========*/
-  .card-frase {
+  .card-sentence {
     display: flex;
     width: 40%;
     text-align: center;
   }
 
-  .card-frase>p {
+  .card-sentence>p {
     font-size: 26px;
     font-weight: 700;
   }

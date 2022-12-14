@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/styles/style.css">
   <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
-  <script src="./assets/JS/index.js" defer></script>
-  <title>Djonga PLayList</title>
+  <title>Playlist Djonga</title>
 </head>
 
 <body>
@@ -17,43 +16,65 @@
 
       <div>
         <img class="img-msc" src="" alt="Thumb Da Música">
-        <p class="name-music">Nome da Música</p>
-        <audio id="audio-principal" src=""></audio>
+        <p class="name-music"></p>
+        <audio id="audio-main" src=""></audio>
       </div>
 
       <div>
         <div>
-          <span id="tempoPercorrido">00:00</span>
-          <span id="tempoTotal">00:00</span>
+          <span id="timeCurrent">00:00</span>
+          <span id="timeTotal">00:00</span>
         </div>
-        <input id="progresso" type="range" min="0" max="0" step="1">
+        <input id="progress" type="range" min="0" max="0" step="1">
       </div>
 
       <section class="control">
-        <img class="btn" src="./assets/icons/anterior.PNG" alt="Botão De Voltar Música">
-        <img class="btn" src="./assets/icons/play.PNG" alt="Botão de PLay">
-        <img class="btn" src="./assets/icons/proxima.PNG" alt="Botão para ir para a próxima música">
+        <img 
+          class="btn" 
+          src="./assets/icons/anterior.PNG" 
+          alt="Botão De Voltar Música"
+        >
+
+        <img 
+          class="btn" 
+          src="./assets/icons/play.PNG" 
+          alt="Botão de PLay"
+        >
+
+        <img 
+          class="btn" 
+          src="./assets/icons/proxima.PNG"
+          alt="Botão para ir para a próxima música"
+        >
       </section>
 
-      <img class="img-open-playlist" onclick="playlist.showPlaylist()" src="./assets/icons/open.PNG"
-        alt="Abrir playlist">
+      <img 
+        class="img-open-playlist" 
+        onclick="playlist.showPlaylist()" 
+        src="./assets/icons/open.PNG"
+        alt="Abrir playlist"
+      >
 
       <section id="playlist">
         <div class="container_close">
-          <img onclick="playlist.hidePlaylist()" src="./assets/icons/close.PNG" alt="Fechar playlist">
+          <img 
+            onclick="playlist.hidePlaylist()" 
+            src="./assets/icons/close.PNG" 
+            alt="Fechar playlist"
+          >
         </div>
+
         <div id="container-audios"></div>
       </section>
-
     </section>
 
-    <section class="card-frase">
+    <section class="card-sentence">
       <p>"Eu sou daqueles que da o papo reto e vive torto" by Djonga</p>
     </section>
   </main>
 
   <script src="./assets/JS/audio.js"></script>
   <script src="./assets/JS/player.js"></script>
+  <script src="./assets/JS/index.js"></script>
 </body>
-
 </html>
