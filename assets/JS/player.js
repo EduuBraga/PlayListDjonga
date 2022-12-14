@@ -11,9 +11,9 @@ const player = {
 
     player.audioMain.src = player.audioCurrent.music
     player.thumbMsc.src = player.audioCurrent.thumb
-    player.nameMsc.innerText = player.audioCurrent.nome
+    player.nameMsc.innerText = player.audioCurrent.nameMsc
 
-    botoes.barraDeProgresso.max = player.audioMain.duration
+    buttons.progressBar.max = player.audioMain.duration
   },
   reStart() {
     player.audioCount++
@@ -21,11 +21,10 @@ const player = {
     if (player.audioCount > player.audiosFile.length - 1) {
       player.audioCount = 0
     }
-    
-    player.start()
 
-    botoes.btnPP.src = "./assets/icons/pause.png"
-    botoes.barraDeProgresso.value = 0
+    player.start()
+    buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
+    buttons.progressBar.value = 0
     player.audioMain.play()
   },
 }
@@ -55,14 +54,14 @@ const playlist = {
 
         player.audioMain.src = player.audioCurrent.music
         player.thumbMsc.src = player.audioCurrent.thumb
-        player.nameMsc.innerText = player.audioCurrent.nome
+        player.nameMsc.innerText = player.audioCurrent.nameMsc
         event.target.classList.add('active-music-playlist')
-        botoes.btnPP.src = "./assets/icons/play.png"
+        buttons.btnPlayOrPause.src = "./assets/icons/play.png"
       }
     }
   },
   PlaylistStart() {
-    let musicasNome = audios.map(music => { return music.nome })
+    let musicasNome = audios.map(music => { return music.nameMsc })
     let srcDasMusicas = audios.map(music => { return music.music })
 
     for (let i = 0; audios.length > i; i++) {
@@ -71,7 +70,7 @@ const playlist = {
 
       audiosPlaylist[i].addEventListener("loadeddata", () => {
         let durationMusicsPlaylist = []
-        durationMusicsPlaylist.push(botoes.segundosParaMinutos(audiosPlaylist[i].duration))
+        durationMusicsPlaylist.push(buttons.getMinutesAndSeconds(audiosPlaylist[i].duration))
 
         playlist.Playlist.innerHTML += `
                 <div id="${i}" class="item-playlist" onclick="playlist.StartMusicPlaylist(event)"> 
@@ -106,14 +105,14 @@ const playlist = {
 }
 
 // === Objeto gerente dos botões ===
-const botoes = {
-  btnAnterior: document.getElementsByClassName("btn")[0],
-  btnPP: document.getElementsByClassName("btn")[1],
-  btnProxima: document.getElementsByClassName("btn")[2],
-  barraDeProgresso: document.getElementById("progress"),
-  tempoTotal: document.getElementById("timeTotal"),
-  tempoPercorrido: document.getElementById("timeCurrent"),
-  voltarMsc() {
+const buttons = {
+  btnToBack: document.querySelector('.btn_to_back'),
+  btnPlayOrPause: document.querySelector('.btn_play_or_pause'),
+  btnToNext: document.querySelector('.btn_to_next'),
+  progressBar: document.querySelector("#progress"),
+  timeTotal: document.getElementById("timeTotal"),
+  timeCurrent: document.getElementById("timeCurrent"),
+  toBackMsc() {
     player.audioCount--
 
     if (player.audioCount < 0) {
@@ -123,26 +122,26 @@ const botoes = {
 
     player.audioMain.src = player.audioCurrent.music
     player.thumbMsc.src = player.audioCurrent.thumb
-    player.nameMsc.innerText = player.audioCurrent.nome
-    botoes.btnPP.src = "./assets/icons/play.png"
-    botoes.barraDeProgresso.value = 0
+    player.nameMsc.innerText = player.audioCurrent.nameMsc
+    buttons.btnPlayOrPause.src = "./assets/icons/play.png"
+    buttons.progressBar.value = 0
 
     playlist.removeActive()
     playlist.ActiveButtonPLaylist()
   },
-  PlayPause() {
+  PlayOrPauseMusic() {
     if (player.audioMain.paused) {
-      botoes.btnPP.src = "./assets/icons/pause.png"
+      buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
       player.audioMain.play()
-      botoes.barraDeProgresso.max = player.audioMain.duration
+      buttons.progressBar.max = player.audioMain.duration
     } else {
-      botoes.btnPP.src = "./assets/icons/play.png"
+      buttons.btnPlayOrPause.src = "./assets/icons/play.png"
       player.audioMain.pause()
     }
 
     playlist.ActiveButtonPLaylist()
   },
-  proximaMsc() {
+  toNextMsc() {
     player.audioCount++
 
     if (player.audioCount > player.audiosFile.length - 1) {
@@ -152,29 +151,31 @@ const botoes = {
 
     player.audioMain.src = player.audioCurrent.music
     player.thumbMsc.src = player.audioCurrent.thumb
-    player.nameMsc.innerText = player.audioCurrent.nome
-    botoes.btnPP.src = "./assets/icons/play.png"
-    botoes.barraDeProgresso.value = 0
-
+    player.nameMsc.innerText = player.audioCurrent.nameMsc
+    buttons.btnPlayOrPause.src = "./assets/icons/play.png"
+    buttons.progressBar.value = 0
 
     playlist.removeActive()
     playlist.ActiveButtonPLaylist()
   },
-  mudarProgresso() {
-    player.audioMain.currentTime = botoes.barraDeProgresso.value
-    botoes.barraDeProgresso.max = player.audioMain.duration
+  changeProgress() {
+    player.audioMain.currentTime = buttons.progressBar.value
+    buttons.progressBar.max = player.audioMain.duration
   },
-  atualizacaoDeProgresso() {
-    botoes.tempoPercorrido.innerText = botoes.segundosParaMinutos(player.audioMain.currentTime)
-    botoes.barraDeProgresso.value = player.audioMain.currentTime
+  updateProgress() {
+    buttons.timeCurrent.innerText =
+      buttons.getMinutesAndSeconds(player.audioMain.currentTime)
+    buttons.progressBar.value = player.audioMain.currentTime
   },
-  timerAudio() {
-    botoes.tempoPercorrido.innerText = botoes.segundosParaMinutos(player.audioMain.currentTime)
-    botoes.tempoTotal.innerText = botoes.segundosParaMinutos(player.audioMain.duration)
+  AddTimeAudioToElement() {
+    buttons.timeCurrent.innerText =
+      buttons.getMinutesAndSeconds(player.audioMain.currentTime)
+    buttons.timeTotal.innerText =
+      buttons.getMinutesAndSeconds(player.audioMain.duration)
   },
-  segundosParaMinutos(tempo) {
-    const minutos = Math.floor(tempo / 60)
-    const segundos = Math.floor(tempo % 60)
+  getMinutesAndSeconds(time) {
+    const minutos = Math.floor(time / 60)
+    const segundos = Math.floor(time % 60)
     return `${("0" + minutos).slice(-2)}:${("0" + segundos).slice(-2)}`
   }
 }
