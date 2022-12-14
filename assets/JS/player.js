@@ -93,73 +93,37 @@ const buttons = {
 const playlist = {
   imgOpenPlaylist: document.querySelector('.img_open_playlist'),
   imgClosePlaylist: document.querySelector('.img_close_playlist'),
-  Playlist: document.querySelector('#playlist'),
-  containerAudiosPlaylist: document.querySelector("#container-audios"),
-  audiosPlaylistPlay: [],
-  itemsPlaylist: [],
-  StartMusicPlaylist(event) {
-    for (let i = 0; playlist.audiosPlaylistPlay.length > i; i++) {
-      if (playlist.audiosPlaylistPlay[i].played.length === 1) {
-        let musicaTocando = player.audiosPlaylistPlay[i]
-        musicaTocando.pause()
-        musicaTocando.played.length = 0
-        musicaTocando.currentTime = 0
-      } else {
-        let musicaActive = document.querySelector('.active-music-playlist')
-        if (musicaActive) {
-          musicaActive.classList.remove('active-music-playlist')
-        }
+  containerClosePlaylist: document.querySelector('.container_close'),
+  containerPlaylist: document.querySelector('.container_playlist'),
+  startHTMLplaylist(){
+    let HTMLPlaylist = ""
 
-        let idMusic = event.target.getAttribute('id')
-        player.indexAudioCurrent = idMusic
-        player.audioCurrent = player.audiosFile[player.indexAudioCurrent]
+    player.audiosFile.forEach(audio => {
+      HTMLPlaylist += `
+        <div id="${audio.id}" class="item-playlist"> 
+            <div>${audio.nameMsc}</div> 
+            <span>3:50</span> 
+        </div>
+      `
+    });
 
-        player.audioMain.src = player.audioCurrent.music
-        player.thumbMsc.src = player.audioCurrent.thumb
-        player.nameMsc.innerText = player.audioCurrent.nameMsc
-        event.target.classList.add('active-music-playlist')
-        buttons.btnPlayOrPause.src = "./assets/icons/play.png"
-      }
-    }
-  },
-  PlaylistStart() {
-    let musicasNome = audios.map(music => { return music.nameMsc })
-    let srcDasMusicas = audios.map(music => { return music.music })
-
-    for (let i = 0; audios.length > i; i++) {
-      playlist.containerAudiosPlaylist.innerHTML += `<audio class="audios-playlist" src="${srcDasMusicas[i]}"></audio>`
-      let audiosPlaylist = document.querySelectorAll('.audios-playlist')
-
-      audiosPlaylist[i].addEventListener("loadeddata", () => {
-        let durationMusicsPlaylist = []
-        durationMusicsPlaylist.push(buttons.getMinutesAndSeconds(audiosPlaylist[i].duration))
-
-        playlist.Playlist.innerHTML += `
-                <div id="${i}" class="item-playlist" onclick="playlist.StartMusicPlaylist(event)"> 
-                    <div>${musicasNome[i]}</div> 
-                    <span>${durationMusicsPlaylist}</span> 
-                </div>`
-
-        playlist.audiosPlaylistPlay = document.querySelectorAll(".audios-playlist")
-        playlist.itemsPlaylist = document.querySelectorAll(".item-playlist")
-      })
-    }
+    playlist.containerPlaylist.innerHTML += HTMLPlaylist
   },
   hideOrShowPlaylist(hideOrShow) {
-    hideOrShow === 'show' ? playlist.Playlist.style = "bottom: 0;"
-      : playlist.Playlist.style = "bottom: -100%;"
+    hideOrShow === 'show' ? playlist.containerPlaylist.style = "bottom: 0"
+      : playlist.containerPlaylist.style = "bottom: -100%"
   },
-  ActiveButtonPLaylist() {
-    for (let i = 0; audios.length > i; i++) {
-      if (player.indexAudioCurrent == playlist.itemsPlaylist[i].getAttribute('id')) {
-        playlist.itemsPlaylist[i].classList.add('active-music-playlist')
-      }
-    }
-  },
-  removeActive() {
-    let musicaActive = document.querySelector('.active-music-playlist')
-    if (musicaActive) {
-      musicaActive.classList.remove('active-music-playlist')
-    }
-  }
+  // ActiveButtonPLaylist() {
+  //   for (let i = 0; audios.length > i; i++) {
+  //     if (player.indexAudioCurrent == playlist.itemsPlaylist[i].getAttribute('id')) {
+  //       playlist.itemsPlaylist[i].classList.add('active-music-playlist')
+  //     }
+  //   }
+  // },
+  // removeActive() {
+  //   let musicaActive = document.querySelector('.active-music-playlist')
+  //   if (musicaActive) {
+  //     musicaActive.classList.remove('active-music-playlist')
+  //   }
+  // }
 }

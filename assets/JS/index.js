@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
-  // Iniciando configurações do primeiro áudio
+  // Predefinindo configurações iniciais
   player.start()
+  playlist.startHTMLplaylist()
 
   // Adicionando eventos aos botões
   buttons.btnToBack
@@ -22,6 +23,4 @@ window.addEventListener("load", () => {
   // Adicionando eventos a Playlist
   playlist.imgOpenPlaylist
     .addEventListener('click', _ => playlist.hideOrShowPlaylist('show'))
-  playlist.imgClosePlaylist
-    .addEventListener('click', _ => playlist.hideOrShowPlaylist('hide'))
 })
