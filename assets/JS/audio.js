@@ -3,55 +3,55 @@ const audios = [
   {
     music: "./assets/audios/junho-de-94.mp3",
     thumb: "./assets/images/junhoDe94.jpg",
-    nome: "Junho De 94",
+    nameMsc: "Junho De 94",
     id: 1
   },
   {
     music: "./assets/audios/leal.mp3",
     thumb: "./assets/images/leal.jpg",
-    nome: "Leal",
+    nameMsc: "Leal",
     id: 2
   },
   {
     music: "./assets/audios/solto.mp3",
     thumb: "./assets/images/solto.jpg",
-    nome: "Solto",
+    nameMsc: "Solto",
     id: 3
   },
   {
     music: "./assets/audios/ladrao.mp3",
     thumb: "./assets/images/ladrão.jpg",
-    nome: "Ladrão",
+    nameMsc: "Ladrão",
     id: 4
   },
   {
     music: "./assets/audios/benca.mp3",
     thumb: "./assets/images/bença.jpg",
-    nome: "Bença",
+    nameMsc: "Bença",
     id: 5
   },
   {
     music: "./assets/audios/falcao.mp3",
     thumb: "./assets/images/falcão.jpg",
-    nome: "Falcão",
+    nameMsc: "Falcão",
     id: 6
   },
   {
     music: "./assets/audios/o-cara-de-oculos.mp3",
     thumb: "./assets/images/oCaraDeOculos.jpg",
-    nome: "O Cara De Óculos",
+    nameMsc: "O Cara De Óculos",
     id: 7
   },
   {
     music: "./assets/audios/hat-trick.mp3",
     thumb: "./assets/images/hatTrick.jpg",
-    nome: "Hat-Trick",
+    nameMsc: "Hat-Trick",
     id: 8
   },
   {
     music: "./assets/audios/olho-de-tigre.mp3",
     thumb: "./assets/images/olhoDeTigre.jpg",
-    nome: "Olho De Tigre",
+    nameMsc: "Olho De Tigre",
     id: 9
   }
 ]
