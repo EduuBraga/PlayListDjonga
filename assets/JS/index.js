@@ -9,8 +9,8 @@ window.addEventListener("load", () => {
 
     botoes.barraDeProgresso.addEventListener("charge", botoes.mudarProgresso)
     botoes.barraDeProgresso.addEventListener("input", botoes.mudarProgresso)
-    player.audio.addEventListener("timeupdate", botoes.atualizacaoDeProgresso)
-    player.audio.addEventListener("loadeddata", botoes.timerAudio)
+    player.audioMain.addEventListener("timeupdate", botoes.atualizacaoDeProgresso)
+    player.audioMain.addEventListener("loadeddata", botoes.timerAudio)
 
-    player.audio.addEventListener("ended", player.reStart)
+    player.audioMain.addEventListener("ended", player.reStart)
 })
