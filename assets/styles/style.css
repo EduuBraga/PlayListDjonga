@@ -26,16 +26,83 @@ body {
   width: 280px;
   text-align: center;
   border-radius: 8px;
+  color: #404040;
 }
 
-.card-sentence {
-  display: none;
+.name-music{
+  font-weight: 700;
+  font-style: italic;
 }
 
 .img-msc {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+}
+
+.card-sentence {
+  display: none;
+}
+
+/* ===== BARRA DE progresso ====== */
+#progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 6px;
+  border-radius: 25px;
+  background-color: #6d6d6a;
+  cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #242424;
+  cursor: pointer;
+}
+
+#progress::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+#timeCurrent {
+  float: left;
+  margin-left: 6%;
+}
+
+#timeTotal {
+  float: right;
+  margin-right: 6%;
+}
+
+/* ======= BOTÕES ======= */
+.btn {
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  width: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 450ms;
+}
+
+.btn:hover {
+  background-color: #a09f9a80;
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
 
 /* === PLAYLIST === */
@@ -118,67 +185,6 @@ body {
   background-image: url(../icons/sound.gif);
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-/* ===== BARRA DE progresso ====== */
-#progress {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 90%;
-  height: 7px;
-  border-radius: 25px;
-  background-image: linear-gradient(90deg, #9e9c93, #858276, #706e66);
-  cursor: pointer;
-}
-
-#progress::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  background-color: #000000;
-  cursor: pointer;
-}
-
-#progress::-moz-range-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  background-color: #000000;
-  cursor: pointer;
-}
-
-#timeCurrent {
-  float: left;
-  margin-left: 6%;
-}
-
-#timeTotal {
-  float: right;
-  margin-right: 6%;
-}
-
-/* ======= BOTÕES ======= */
-.btn {
-  border: 2px solid black;
-  border-radius: 50%;
-  padding: 5px;
-  width: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: background-color 450ms;
-}
-
-.btn:hover {
-  background-color: #615f5780;
-}
-
-.btn:active {
-  transform: scale(0.95);
 }
 
 @media screen and (min-width: 800px) {
