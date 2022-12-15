@@ -10,7 +10,6 @@ const player = {
     player.audioCurrent = player.audiosFile[player.indexAudioCurrent]
 
     player.audioMain.src = player.audioCurrent.music
-    player.audioMain.id = player.audioCurrent.id
     player.thumbMsc.src = player.audioCurrent.thumb
     player.nameMsc.innerText = player.audioCurrent.nameMsc
 
@@ -98,13 +97,17 @@ const playlist = {
   startHTMLplaylist() {
     player.audiosFile.forEach(audio => {
       playlist.containerPlaylist.innerHTML += `
-          <div class="item-playlist"> 
+          <div id="music${audio.id}" class="item-playlist"> 
             <div>${audio.nameMsc}</div> 
             <span>${audio.duration}</span> 
           </div>
         `
     });
 
+    //Adiciona feedback a primeira music quando a página pé carregada.
+    document.querySelector('#music1').classList.add('active-music-playlist')
+
+    //Adiciona eventos de click aos items da lista
     playlist.addEventItemPlaylist()
   },
   addEventItemPlaylist() {
@@ -112,13 +115,32 @@ const playlist = {
 
     itemsPlaylist.forEach((item, index) => {
       item.addEventListener('click', () => {
-        const idMusicClicked = index + 1
+        const idMusicClicked = index
 
+        //removendo feedback à música que está tocando na playlist.
+        playlist.removeFeedbackActiveMusicPlaylist()
+        
+        //Adicionando feedback a música que está tocando na playlist.
+        playlist.addFeedbackActiveMusicPlaylist(idMusicClicked)
+
+        //Setando qual o index do áudio clicado e mudando o áudio de acordo.
         player.indexAudioCurrent = idMusicClicked
         buttons.btnPlayOrPause.src = "./assets/icons/play.png"
         player.start()
       })
     })
+  },
+  addFeedbackActiveMusicPlaylist(id) {
+    const musicClicked = document.querySelector(`#music${id + 1}`)
+
+    musicClicked.classList.add('active-music-playlist')
+  },
+  removeFeedbackActiveMusicPlaylist(){
+    const musicWithFeedback = document.querySelector('.active-music-playlist')
+
+    if(musicWithFeedback){
+      musicWithFeedback.classList.remove('active-music-playlist')
+    }
   },
   hideOrShowPlaylist(hideOrShow) {
     hideOrShow === 'show'
