@@ -7,17 +7,18 @@
 ## 💻 Sobre o Projeto
 <p>
   A aplicação trata-se de um simulador de leitor MP3/MP4, tocando músicas do escritor e compositor Djonga.
+</p>
 
 ## ⚙ Funcionalides
-- Opção de escolher uma músicas na galeria
-- Opção de pausar a música
-- Opção de dar play na música
-- Opção de pular a música
-- Opção de voltar a música
-- Feedback de qual música esta tocando na galeria
+- Opção de escolher uma música da playlist.
+- Pause/Play.
+- Pular para a próxima música.
+- Voltar para a música anterior.
+- Feedback de qual música esta tocando na playlist.
+- Controle do progresso da música.
 
 ## 🎨 View
-![djongaplaylist](https://user-images.githubusercontent.com/99041150/195125613-c2d4d5b0-c80d-4602-abfe-551db637c7ed.gif)
+![Playlist Djonja GIF](https://user-images.githubusercontent.com/99041150/207950321-78aea634-33c4-49e9-89cf-f98c1d2fbe02.gif)
 
 ## 🛠 Tecnologias
 As seguintes ferramentas foram usadas na construção do projeto:
