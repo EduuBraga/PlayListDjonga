@@ -48,8 +48,16 @@ const buttons = {
     }
   },
   handleBackOrNextMusic(backOrNext) {
+    //conferindo se é para avançar ou voltar a música.
     buttons.backOrAdvanceIndex(backOrNext)
 
+    //removendo feedback da música que está tocando na playlist.
+    playlist.removeFeedbackActiveMusicPlaylist()
+    
+    //Adicionando feedback à música que está tocando na playlist.
+    playlist.addFeedbackActiveMusicPlaylist(player.indexAudioCurrent)
+
+    //Trocando os dados da música atual.
     player.start()
     buttons.btnPlayOrPause.src = "./assets/icons/play.png"
     buttons.progressBar.value = 0
@@ -61,11 +69,10 @@ const buttons = {
     if (musicPaused) {
       buttons.btnPlayOrPause.src = "./assets/icons/pause.png"
       player.audioMain.play()
-      return
+    }else {
+      buttons.btnPlayOrPause.src = "./assets/icons/play.png"
+      player.audioMain.pause()
     }
-
-    buttons.btnPlayOrPause.src = "./assets/icons/play.png"
-    player.audioMain.pause()
   },
   changeProgress() {
     player.audioMain.currentTime = buttons.progressBar.value
@@ -89,7 +96,6 @@ const buttons = {
   }
 }
 
-
 // Objeto gerente da playlist 
 const playlist = {
   imgOpenPlaylist: document.querySelector('.img_open_playlist'),
@@ -104,10 +110,10 @@ const playlist = {
         `
     });
 
-    //Adiciona feedback a primeira music quando a página pé carregada.
+    //Adiciona feedback a primeira música quando a página for carregada.
     document.querySelector('#music1').classList.add('active-music-playlist')
 
-    //Adiciona eventos de click aos items da lista
+    //Adiciona eventos de click aos items da playlist.
     playlist.addEventItemPlaylist()
   },
   addEventItemPlaylist() {
@@ -117,10 +123,10 @@ const playlist = {
       item.addEventListener('click', () => {
         const idMusicClicked = index
 
-        //removendo feedback à música que está tocando na playlist.
+        //removendo feedback da música que está tocando na playlist.
         playlist.removeFeedbackActiveMusicPlaylist()
         
-        //Adicionando feedback a música que está tocando na playlist.
+        //Adicionando feedback à música que está tocando na playlist.
         playlist.addFeedbackActiveMusicPlaylist(idMusicClicked)
 
         //Setando qual o index do áudio clicado e mudando o áudio de acordo.
