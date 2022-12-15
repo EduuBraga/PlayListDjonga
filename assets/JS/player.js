@@ -96,35 +96,33 @@ const playlist = {
   imgOpenPlaylist: document.querySelector('.img_open_playlist'),
   containerPlaylist: document.querySelector('.container_playlist'),
   startHTMLplaylist() {
-    let HTMLPlaylist = ""
-
     player.audiosFile.forEach(audio => {
-      HTMLPlaylist += `
-        <div id="${audio.id}" class="item-playlist"> 
+      playlist.containerPlaylist.innerHTML += `
+          <div class="item-playlist"> 
             <div>${audio.nameMsc}</div> 
-            <span">${audio.duration}</span> 
-        </div>
-      `
+            <span>${audio.duration}</span> 
+          </div>
+        `
     });
 
-    playlist.containerPlaylist.innerHTML += HTMLPlaylist
+    playlist.addEventItemPlaylist()
+  },
+  addEventItemPlaylist() {
+    const itemsPlaylist = document.querySelectorAll('.item-playlist')
+
+    itemsPlaylist.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        const idMusicClicked = index + 1
+
+        player.indexAudioCurrent = idMusicClicked
+        buttons.btnPlayOrPause.src = "./assets/icons/play.png"
+        player.start()
+      })
+    })
   },
   hideOrShowPlaylist(hideOrShow) {
     hideOrShow === 'show'
       ? playlist.containerPlaylist.style = "bottom: 0"
       : playlist.containerPlaylist.style = "bottom: -100%"
-  },
-  // ActiveButtonPLaylist() {
-  //   for (let i = 0; audios.length > i; i++) {
-  //     if (player.indexAudioCurrent == playlist.itemsPlaylist[i].getAttribute('id')) {
-  //       playlist.itemsPlaylist[i].classList.add('active-music-playlist')
-  //     }
-  //   }
-  // },
-  // removeActive() {
-  //   let musicaActive = document.querySelector('.active-music-playlist')
-  //   if (musicaActive) {
-  //     musicaActive.classList.remove('active-music-playlist')
-  //   }
-  // }
+  }
 }
